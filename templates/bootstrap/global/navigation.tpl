@@ -8,7 +8,6 @@
                     <li>
                         <a href="{$smarty.server.SCRIPT_NAME}?page=dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
-
                     <li {if $smarty.get.page|default:"0" eq "account"}class="active"{/if}>
                         <a href="#"><i class="fa fa-user-md fa-fw"></i> My Account<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -64,6 +63,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     {/if}
+                    {if ($GLOBAL.acl.statistics.loggedin|default:"0" == 0 && ($smarty.session.AUTHENTICATED|default:"0" == 0 OR $smarty.session.AUTHENTICATED|default:"0" == 1)) OR ($GLOBAL.acl.statistics.loggedin|default:"0" == 1 && $smarty.session.AUTHENTICATED|default:"0" == 1)}
                     <li {if $smarty.get.page|default:"0" eq "statistics"}class="active"{/if}>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Statistics<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -77,6 +77,8 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    {/if}
+                    {if ($GLOBAL.acl.help.loggedin|default:"0" == 0 && ($smarty.session.AUTHENTICATED|default:"0" == 0 OR $smarty.session.AUTHENTICATED|default:"0" == 1)) OR ($GLOBAL.acl.help.loggedin|default:"0" == 1 && $smarty.session.AUTHENTICATED|default:"0" == 1)}
                     <li {if $smarty.get.page|default:"0" eq "gettingstarted" || $smarty.get.page|default:"0" eq "about"}class="active"{/if}>
                         <a href="#"><i class="fa fa-question fa-fw"></i> Help<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -87,6 +89,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    {/if}
                     <li {if $smarty.get.page|default:"0" eq "register" || $smarty.get.page|default:"0" eq "login" || $smarty.get.page|default:"0" eq "logout" || $smarty.get.page|default:"0" eq "tac" || $smarty.get.page|default:"0" eq "contactform"}class="active"{/if}>
                         <a href="#"><i class="fa fa-tasks fa-fw"></i> Other<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
